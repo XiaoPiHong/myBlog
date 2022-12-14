@@ -12,9 +12,9 @@ export default defineConfig({
     nav: [],
     sidebar: [
       {
-        text: "test",
+        text: "模块化",
         collapsible: true,
-        items: [{ text: "前言", link: "/module/modular-specification" }],
+        items: [{ text: "理解模块化", link: "/module/modular-specification" }],
       },
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/XiaoPiHong" }],
