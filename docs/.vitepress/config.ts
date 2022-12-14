@@ -11,6 +11,11 @@ export default defineConfig({
     outline: "deep",
     nav: [],
     sidebar: [
+      {
+        text: "test",
+        collapsible: true,
+        items: [{ text: "前言", link: "/test/test1" }],
+      },
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/XiaoPiHong" }],
     editLink: {
