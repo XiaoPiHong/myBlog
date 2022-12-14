@@ -14,7 +14,7 @@ export default defineConfig({
       {
         text: "test",
         collapsible: true,
-        items: [{ text: "前言", link: "/test/test1" }],
+        items: [{ text: "前言", link: "/module/modular-specification" }],
       },
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/XiaoPiHong" }],
