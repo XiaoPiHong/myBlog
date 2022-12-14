@@ -1,0 +1,26 @@
+{
+  "name": "myBlog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XiaoPiHong/myBlog.git"
+  },
+  "author": "XiaoPiHong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XiaoPiHong/myBlog/issues"
+  },
+  "homepage": "https://github.com/XiaoPiHong/myBlog#readme",
+  "devDependencies": {
+    "markdown-it-mathjax3": "^4.3.2",
+    "prettier": "^2.7.1",
+    "vitepress": "^1.0.0-alpha.21"
+  }
+}

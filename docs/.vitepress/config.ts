@@ -1,0 +1,26 @@
+import { defineConfig } from "vitepress";
+import markdownItMathjax3 from "markdown-it-mathjax3";
+
+export default defineConfig({
+  title: "XiaoPiHong 的博客",
+  description: "一个博客网站",
+  lang: "zh-CN",
+  base: "/myBlog",
+  themeConfig: {
+    logo: "/logo.svg",
+    outline: "deep",
+    nav: [],
+    sidebar: [
+    ],
+    socialLinks: [{ icon: "github", link: "https://github.com/XiaoPiHong" }],
+    editLink: {
+      pattern: "https://github.com/XiaoPiHong/myBlog/edit/master/docs/:path",
+      text: "在 GitHub 编辑此页",
+    },
+  },
+  markdown: {
+    config: (md) => {
+      md.use(markdownItMathjax3);
+    },
+  },
+});
