@@ -14,7 +14,10 @@ export default defineConfig({
       {
         text: "模块化",
         collapsible: true,
-        items: [{ text: "理解模块化", link: "/module/modular-specification" }],
+        items: [
+          { text: "理解模块化", link: "/module/modular-specification" },
+          { text: "模块化与组件化", link: "/module/modular-componentization" },
+        ],
       },
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/XiaoPiHong" }],
