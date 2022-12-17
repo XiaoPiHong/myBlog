@@ -19,6 +19,13 @@ export default defineConfig({
           { text: "模块化与组件化", link: "/module/modular-componentization" },
         ],
       },
+      {
+        text: "JavaScript",
+        collapsible: true,
+        items: [
+          { text: "原型与原型链", link: "/prototype/prototype-prototypeChain" },
+        ],
+      },
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/XiaoPiHong" }],
     editLink: {
