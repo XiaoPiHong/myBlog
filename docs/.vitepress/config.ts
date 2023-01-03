@@ -20,7 +20,7 @@ export default defineConfig({
         ],
       },
       {
-        text: "JavaScript",
+        text: "原型",
         collapsible: true,
         items: [
           { text: "原型与原型链", link: "/prototype/prototype-prototypeChain" },
