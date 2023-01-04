@@ -1,3 +1,5 @@
+# 文件操作
+
 ## 1. 认识文件类型家族图
 
 ![](file-operation.assets/file-operation-1.png)
@@ -5,10 +7,13 @@
 ## 2. FileReader
 
 > 1.HTML5 定义了 FileReader 作为文件 API 的重要成员用于读取文件
-> 2.FileReader.readAsDataURL()方法，在读取指定的 Blob/File 中的内容后，一旦完成，FileReader 实例对象的 result 属性中将包含一个 data:
-> URL 格式的 Base64 字符串以表示所读取文件的内容
+>
+> 2.FileReader.readAsDataURL()方法，在读取指定的 Blob/File 中的内容后，一旦完成，FileReader 实例对象的 result 属性中将包含一个 data:URL 格式的 Base64 字符串以表示所读取文件的内容
+>
 > 3.FileReader.readAsArrayBuffer()方法，在读取指定的 Blob/File 中的内容后，一旦完成，FileReader 实例对象的 result 属性中将包含一个 ArrayBuffer 的二进制数据缓冲区
+>
 > 4.FileReader.readAsText()方法，在读取指定的 Blob/File 中的内容后，一旦完成，FileReader 实例对象的 result 属性中将包含一个文本（文本的编码格式可设置，一般为 utf-8）
+>
 > 5.base64 格式的字符串图片可作为 url 显示图片，所以 FileReader 可以实现图片预览
 
 ### 2.1 利用 FileReader 读取图片，返回 base64 格式的数据，显示图片
