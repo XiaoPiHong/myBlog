@@ -2,7 +2,7 @@
 
 使用 a 标签的 download 属性，可下载同源文件
 
-> 使用 a 标签的 download 属性，下载非同源图片，download 属性会失效，从而转变成跳转
+> 注意：使用 a 标签的 download 属性，下载非同源图片，download 属性会失效，从而转变成跳转
 
 ```html
 <a download href="http://localhost:3000/img/table_render_1.dd0bb72f.png"
@@ -10,11 +10,11 @@
 >
 ```
 
-### 2.下载非同源文件
+## 2.下载非同源文件
 
 通过将获取到的二进制数据 blob，转成 Object URL 地址，再使用 a 标签的 download 属性下载同源文件
 
-> URL.createObjectURL() 可以为文件生成一个同源 url 地址
+> 理解：URL.createObjectURL() 可以为文件生成一个同源 url 地址
 
 ```html
 <button
@@ -50,7 +50,7 @@
   }
 ```
 
-### 3.通过 canvas 可下载跨域图片
+## 3.通过 canvas 可下载跨域图片
 
 ```html
 <button
