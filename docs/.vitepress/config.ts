@@ -29,7 +29,10 @@ export default defineConfig({
       {
         text: "文件",
         collapsible: true,
-        items: [{ text: "文件下载", link: "/file/file-download" }],
+        items: [
+          { text: "文件操作", link: "/file/file-operation" },
+          { text: "文件下载", link: "/file/file-download" },
+        ],
       },
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/XiaoPiHong" }],
