@@ -26,6 +26,11 @@ export default defineConfig({
           { text: "原型与原型链", link: "/prototype/prototype-prototypeChain" },
         ],
       },
+      {
+        text: "文件",
+        collapsible: true,
+        items: [{ text: "文件下载", link: "/file/file-download" }],
+      },
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/XiaoPiHong" }],
     editLink: {
