@@ -34,6 +34,14 @@ export default defineConfig({
           { text: "文件下载", link: "/file/file-download" },
         ],
       },
+      {
+        text: "Vue",
+        collapsible: true,
+        items: [
+          { text: "vue2.x双向绑定原理", link: "/vue/vue-vue2-principle" },
+          { text: "vue3.x双向绑定原理", link: "/vue/vue-vue3-principle" },
+        ],
+      },
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/XiaoPiHong" }],
     editLink: {
