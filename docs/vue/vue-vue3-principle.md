@@ -1,4 +1,8 @@
-# vue3.x 双向绑定原理 (待完善)
+# vue3.x 双向绑定原理
+
+## vue2.x 实现响应式不足之处
+
+vue2 监听不到 delete 和动态添加的属性，而且每个属性都要用 defineProperty 处理
 
 ```javascript
 //源数据
@@ -7,66 +11,78 @@ let person = {
   age: 18,
 };
 
-//模拟vue2中实现响应式======================================
-//#region
-/*
-    //vue2监听不到delete和动态添加的属性，而且每个属性都要用defineProperty处理
-    let p = {}
-    Object.defineProperty(p, 'name', {
-      configurable: true,//可配置的，设置为true才能删除
-      get() {//有人读取name属性
-        return person.name
-      },
-      set(value) {//有人修改name属性
-        console.log('有人修改了name属性，更新界面操作')
-        person.name = value
-      }
-    })
-    Object.defineProperty(p, 'age', {
-      configurable: true,
-      get() {//有人读取age属性
-        return person.age
-      },
-      set(value) {//有人修改age属性
-        console.log('有人修改了age属性，更新界面操作')
-        person.age = value
-      }
-    //
-    })
-    */
-//#endregion
+let p = {};
+Object.defineProperty(p, "name", {
+  configurable: true, //可配置的，设置为true才能删除
+  get() {
+    //有人读取name属性
+    return person.name;
+  },
+  set(value) {
+    //有人修改name属性
+    console.log("有人修改了name属性，更新界面操作");
+    person.name = value;
+  },
+});
+Object.defineProperty(p, "age", {
+  configurable: true,
+  get() {
+    //有人读取age属性
+    return person.age;
+  },
+  set(value) {
+    //有人修改age属性
+    console.log("有人修改了age属性，更新界面操作");
+    person.age = value;
+  },
+});
+```
 
-//模拟vue3中实现响应式（不完整，没使用Reflect）================================================
-//#region
-/*
-    //参数1：被代理的对象，参数2：配置项
-    const p = new Proxy(person, {
-      //读取
-      get(target, propName) {
-        console.log(`有人读取了p身上的${propName}属性`)
-        return target[propName]
-      },
-      //修改/追加
-      set(target, propName, value) {
-        console.log(`有人修改了p身上的${propName}属性的值为${value},我要去更新界面了！`)
-        target[propName] = value
-      },
-      //删除
-      deleteProperty(target, propName) {
-        console.log(target)//target就是被代理的对象
-        console.log(`有人修改了p身上的${propName}属性，我要去更新界面了！`)
-        return delete target[propName]
-      }
-    })
-    p.name = '李四'//可以修改person的name
-    delete p.age//可以删除person的age
-    p.job = "前端程序员"
-    console.log(person)
-    */
-//#endregion
+## 简易实现 vue3.x 响应式 （无 Reflect）
 
-//模拟vue3中实现响应式（完整版使用了Reflect）==========================================
-//#region
+```javascript
+//源数据
+let person = {
+  name: "张三",
+  age: 18,
+};
+
+//参数1：被代理的对象，参数2：配置项
+const p = new Proxy(person, {
+  //读取
+  get(target, propName) {
+    console.log(`有人读取了p身上的${propName}属性`);
+    return target[propName];
+  },
+  //修改/追加
+  set(target, propName, value) {
+    console.log(
+      `有人修改了p身上的${propName}属性的值为${value},我要去更新界面了！`
+    );
+    target[propName] = value;
+  },
+  //删除
+  deleteProperty(target, propName) {
+    console.log(target); //target就是被代理的对象
+    console.log(`有人修改了p身上的${propName}属性，我要去更新界面了！`);
+    return delete target[propName];
+  },
+});
+p.name = "李四"; //可以修改person的name
+delete p.age; //可以删除person的age
+p.job = "前端程序员";
+console.log(person);
+```
+
+## vue3.x 实现响应式推导（Reflect）
+
+```javascript
+//源数据
+let person = {
+  name: "张三",
+  age: 18,
+};
+
 //下面是推导过程
 //（1.）首先要理解es6中的Reflect（反射），vue3的响应式也使用了这个内置对象，为什么要使用Reflect，下面推导
 //（2.）先看看Reflect（反射）的作用
@@ -152,5 +168,4 @@ delete p.age; //可以删除person的age
 p.job = "前端程序员";
 console.log(person);
 //==============================================最终end
-//#endregion
 ```
