@@ -40,6 +40,7 @@ export default defineConfig({
         items: [
           { text: "vue2.x双向绑定原理", link: "/vue/vue-vue2-principle" },
           { text: "vue3.x双向绑定原理", link: "/vue/vue-vue3-principle" },
+          { text: "样式穿透", link: "/vue/vue-deep" },
         ],
       },
     ],
