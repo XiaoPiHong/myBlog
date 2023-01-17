@@ -43,6 +43,11 @@ export default defineConfig({
           { text: "样式穿透", link: "/vue/vue-deep" },
         ],
       },
+      {
+        text: "Http",
+        collapsible: true,
+        items: [{ text: "jsonp", link: "/http/http-jsonp" }],
+      },
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/XiaoPiHong" }],
     editLink: {
