@@ -9,7 +9,7 @@ function Person(name) {
 Person.prototype.eat = function () {
   console.log("吃");
 };
-var per = new Person();
+var per = new Person("老六");
 ```
 
 ## es6 的类
