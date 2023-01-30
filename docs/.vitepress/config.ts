@@ -24,6 +24,7 @@ export default defineConfig({
         collapsible: true,
         items: [
           { text: "原型与原型链", link: "/prototype/prototype-prototypeChain" },
+          { text: "继承", link: "/prototype/prototype-extend" },
         ],
       },
       {
