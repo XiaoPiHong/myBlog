@@ -47,7 +47,10 @@ export default defineConfig({
       {
         text: "Http",
         collapsible: true,
-        items: [{ text: "jsonp", link: "/http/http-jsonp" }],
+        items: [
+          { text: "jsonp", link: "/http/http-jsonp" },
+          { text: "Http缓存", link: "/http/http-cache" },
+        ],
       },
       {
         text: "其他",
