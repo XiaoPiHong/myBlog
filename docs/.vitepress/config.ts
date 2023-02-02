@@ -67,7 +67,7 @@ export default defineConfig({
         collapsible: true,
         items: [
           { text: "script标签执行顺序", link: "/other/other-script" },
-          { text: "git使用", link: "/other/other-gitUse" },
+          { text: "git使用", link: "/other/other-git" },
         ],
       },
     ],

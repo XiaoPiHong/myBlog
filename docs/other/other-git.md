@@ -184,7 +184,11 @@ git stash apply stash@{0}
 git stash pop stash@{0}
 ```
 
-5.你可以多次 stash，恢复的时候，先用 git stash list 查看，然后恢复指定的 stash，用命令 git stash apply stash@{0}
+5.你可以多次 stash，恢复的时候，先用 git stash list 查看，然后恢复指定的 stash，用命令
+
+```bash
+git stash apply stash@{0}
+```
 
 stash 储藏注意事项：
 
