@@ -25,22 +25,6 @@ export default defineConfig({
         items: [{ text: "vite", link: "/engineering/engineering-vite" }],
       },
       {
-        text: "原型",
-        collapsible: true,
-        items: [
-          { text: "原型与原型链", link: "/prototype/prototype-prototypeChain" },
-          { text: "继承", link: "/prototype/prototype-extend" },
-        ],
-      },
-      {
-        text: "文件",
-        collapsible: true,
-        items: [
-          { text: "文件操作", link: "/file/file-operation" },
-          { text: "文件下载", link: "/file/file-download" },
-        ],
-      },
-      {
         text: "Vue",
         collapsible: true,
         items: [
@@ -56,6 +40,27 @@ export default defineConfig({
           { text: "jsonp", link: "/http/http-jsonp" },
           { text: "Http缓存", link: "/http/http-cache" },
         ],
+      },
+      {
+        text: "文件",
+        collapsible: true,
+        items: [
+          { text: "文件操作", link: "/file/file-operation" },
+          { text: "文件下载", link: "/file/file-download" },
+        ],
+      },
+      {
+        text: "原型",
+        collapsible: true,
+        items: [
+          { text: "原型与原型链", link: "/prototype/prototype-prototypeChain" },
+          { text: "继承", link: "/prototype/prototype-extend" },
+        ],
+      },
+      {
+        text: "服务器",
+        collapsible: true,
+        items: [{ text: "部署生产环境", link: "/server/server-install" }],
       },
       {
         text: "其他",
