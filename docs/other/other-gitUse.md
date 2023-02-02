@@ -134,7 +134,7 @@ git push -u origin 分支名称
 
 5.切换本地的 master 分支，合并 work_one 分支
 
-6.删除 work_one 分支:git branch -d work_one
+6.删除 work_one 分支：git branch -d work_one
 
 ## 解决冲突
 
