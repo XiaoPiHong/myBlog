@@ -1,31 +1,58 @@
 ## 基本操作
 
 克隆远程服务器上的仓库
+
+```bash
 git clone 仓库连接
+```
 
 更新 git 最新版本
+
+```bash
 git update-git-for-windows
+```
 
 查看修改了文件的文件夹的状态
+
+```bash
 git status
+```
 
 生成一条日志流水（添加到 index 工作区）
+
+```bash
 git add 文件名.后缀
+```
 
 提交到 git 仓库（添加到 master 工作区）
+
+```bash
 git commit -m "添加这个文件的信息（如：first commit）"
+```
 
 查看操作日志（可以看到 commit 记录的 id）（记录是倒序排列的）
+
+```bash
 git log
+```
 
 查看某条 commit 记录都做了什么
+
+```bash
 git show commit 的 id
+```
 
 回滚到指定的 commit 记录
+
+```bash
 git reset commit 的 id
+```
 
 提交到远端（github 里面可以看到修改的文件）
+
+```bash
 git push
+```
 
 github 生成 ssh key
 
@@ -65,31 +92,31 @@ git branch
 
 1.提交代码到需要合并的分支
 
-```
+```bash
 git commit -m '信息'
 ```
 
 2.先要切换到 master 分支
 
-```
+```bash
 git checkout master
 ```
 
 3.合并分支（ 合并 login 分支里面的所有代码）
 
-```
+```bash
 git merge login
 ```
 
 4.再把本地的代码推送到云端
 
-```
+```bash
 git push
 ```
 
 ### 5.将本地的分支推送到云端
 
-```
+```bash
 git push -u origin 分支名称
 ```
 
@@ -113,7 +140,7 @@ git push -u origin 分支名称
 
 1.不同的分支修改了相同的文件或别人创建了新文件或别人编辑了其它文件，一个人先 commit 之后 push 提交了，另一个人 commit 之后 push 不了，要先拉取别人先提交的代码
 
-2.拉取之后就需要解决有冲突的文件，别人先提交创建的新文件或编辑的其它文件与你没有冲突 git 会自动帮你添加到暂存区，有冲突的文件需要你自己解决冲突，解决冲突之后要继续将这个解决冲突后的文件 add 添加到暂存区，重新与无冲突的新文件一起 commit（这里默认都是 Merge branch 'master' of https://gitee.com/XiaoPiHong/test，也可以自己修改；注意：如果都是一些不会影响到你的文件，你在终端pull之后编辑commit信息再push就行了不需要做什么，它们系统都会自动帮你add到暂存区的），这样就解决这个冲突了
+2.拉取之后就需要解决有冲突的文件，别人先提交创建的新文件或编辑的其它文件与你没有冲突 git 会自动帮你添加到暂存区，有冲突的文件需要你自己解决冲突，解决冲突之后要继续将这个解决冲突后的文件 add 添加到暂存区，重新与无冲突的新文件一起 commit（这里默认都是 Merge branch 'master' of xxx，也可以自己修改；注意：如果都是一些不会影响到你的文件，你在终端 pull 之后编辑 commit 信息再 push 就行了不需要做什么，它们系统都会自动帮你 add 到暂存区的），这样就解决这个冲突了
 
 3.最后再 push 提交到远程仓库
 
@@ -133,13 +160,29 @@ git push -u origin 分支名称
 
 ## stash 储藏
 
-1.git stash 将修改的文件存储起来
+1.将修改的文件存储起来
 
-2.git stash list 查看有没有存储的 stash
+```bash
+git stash
+```
 
-3.git stash apply stash@{0}恢复，但是恢复后，stash 内容并不删除，你需要用 git stash drop stash@{0}来删除
+2.查看有没有存储的 stash
 
-4.git stash pop stash@{0}恢复，恢复的同时把 stash 内容也删了
+```bash
+git stash list
+```
+
+3.恢复，但是恢复后，stash 内容并不删除，你需要用 git stash drop stash@{0}来删除
+
+```bash
+git stash apply stash@{0}
+```
+
+4.恢复，恢复的同时把 stash 内容也删了
+
+```bash
+git stash pop stash@{0}
+```
 
 5.你可以多次 stash，恢复的时候，先用 git stash list 查看，然后恢复指定的 stash，用命令 git stash apply stash@{0}
 
