@@ -65,7 +65,10 @@ export default defineConfig({
       {
         text: "其他",
         collapsible: true,
-        items: [{ text: "script标签执行顺序", link: "/other/other-script" }],
+        items: [
+          { text: "script标签执行顺序", link: "/other/other-script" },
+          { text: "git", link: "/other/other-git" },
+        ],
       },
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/XiaoPiHong" }],
