@@ -20,6 +20,11 @@ export default defineConfig({
         ],
       },
       {
+        text: "前端工程化",
+        collapsible: true,
+        items: [{ text: "vite", link: "/engineering/engineering-vite" }],
+      },
+      {
         text: "原型",
         collapsible: true,
         items: [
