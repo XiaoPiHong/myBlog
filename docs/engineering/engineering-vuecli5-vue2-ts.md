@@ -10,7 +10,7 @@ npm install -g @vue/cli
 
 ## 2.使用脚手架创建项目，自主选择依赖，创建时选择依赖 vue2.0 scss eslint+prettier ts
 
-注意：代码校验有两种方案： 1.Lint on save：保存即检查 2.Lint and fix on commit： fix 和 commit 的时候才检查
+注意：代码校验有两种方案： 1.Lint on save：保存即检查 2.Lint and fix on commit： commit 时检查并修复（推荐）
 
 ```bash
 vue create hello-world
@@ -288,6 +288,9 @@ module.exports = {
   'src/**/*.{js,ts,vue}': 'eslint --fix' // 使用eslint检验修复并加入暂存
 }
 ```
+
+## 8.demo地址
+[vuecli5_vue2_ts_eslint_prettier](https://github.com/XiaoPiHong/vuecli5_vue2_ts_eslint_prettier)
 
 
 
