@@ -51,21 +51,21 @@ module.exports = {
 
 ## 5.规范 git 提交信息
 
-1.安装 commitizen 规范 Git 提交说明
-该依赖是一套规则，能够让开发者对代码提交信息统一格式
+### 1.安装 commitizen 规范 Git 提交说明
+
+Commitizen是一个撰写符合Commit Message标准的一款工具，可以帮助开发者提交符合规范的Commit Message
 
 ```bash
 npm install -D commitizen -S
 ```
 
-2.安装 cz-customizable
-该依赖能在代码提交前进行信息选择，不用手动填写
+### 2.安装 cz-customizable（cz-customizable是本地适配器）
 
 ```bash
 npm install -D cz-customizable -S
 ```
 
-3.配置 commitizen 使用 cz-customizable 作为插件，在 package.json 中添加下面节点
+### 3.配置 commitizen，使用 cz-customizable 作为信息交互插件，在 package.json 中添加下面节点
 
 ```json
 "config": {
@@ -73,11 +73,12 @@ npm install -D cz-customizable -S
     "path": "node_modules/cz-customizable"
   }
 }
-此时可以执行 git cz 来进行 commit 看到效果
+此时可以执行 git cz 来进行信息交互的方式commit
 ```
 
-4.项目根目录下创建.cz-config.js 文件（其实就是对 cz-customizable 中默认的模板内容进行中译）
-cz-customizable 插件会优先在根目录中查找名为.cz-config.js 或者.config/cz-config.js 的文件作为规范的模板
+### 4.项目根目录下创建.cz-config.js 文件
+
+cz-customizable 会优先在根目录中查找名为.cz-config.js 或者.config/cz-config.js 的文件作为信息交互的模板
 
 ```javascript
 module.exports = {
@@ -171,20 +172,128 @@ module.exports = {
   // footerPrefix : 'ISSUES CLOSED:'
   // askForBreakingChangeFirst : true,
 };
+此时可以执行 git cz 来进行信息交互的方式commit（交互信息变为中文）
 ```
 
-此时可以执行 git cz 来进行 commit 看到之前的英文选项已经中译
-
-5.安装 commitlint 检查提交消息是否符合常规提交格式
+### 5.安装 commitlint 检查提交消息是否符合常规提交格式
 
 ```bash
 npm install -D -S @commitlint/cli @commitlint/config-conventional
 ```
 
-6.项目根目录下创建 commitlint.config.js 文件，标明 commitlint 校验时使用的规范是@commitlint/config-conventional
+### 6.项目根目录下创建 commitlint.config.js 文件，并标明 commitlint 校验时使用的规范是@commitlint/config-conventional
 
-注意：该处用的提交格式规范是 Conventional Commits，预先配置 commitizen 创建的.cz-config.js 要按照前者的规范来配置
+注意：该处用的提交格式规范是 Conventional Commits，预先配置的 commitizen 信息交互模板要按照前者的规范来配置
 
 ```javascript
 module.exports = { extends: ["@commitlint/config-conventional"] };
 ```
+
+### 7.安装Husky，commit时触发 commitlint 中的校验
+
+1.Husky 是一款 Git Hooks 工具，可以在执行特定的 git 命令时（如: git commit, git push）触发对应的脚本
+
+2.安装
+```bash
+npm install husky --save-dev
+```
+
+3.激活钩子
+```bash
+npx husky install
+```
+
+4.设置安装依赖时自动激活钩子脚本
+```bash
+npm set-script prepare "husky install"
+```
+
+5.添加钩子
+```bash
+npx husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
+```
+
+6.现在 commit 都会触发 commitlint 中指令来校验提交信息的格式，但是我想每次commit都是通过信息交互的方式进行内容填写，可以在package.json中添加脚本命令
+```json
+"scripts": {
+  "commit": "cz",
+}
+此时每次commit直接执行npm run commit就行
+```
+
+## 6.使用 lint-staged 检验与格式化暂存区文件
+
+> 现在项目采用保存时使用编辑器插件先对代码进行格式化，在提交的时候借助lint-staged来使用依赖对暂存区代码进行检验并修复的方案
+
+> 问：为什么要使用lint-staged，而不直接添加husky钩子来执行代码进行检验并修复？如果有错误，git hooks 也会在提交前运行 ESLint 并抛出错误，并阻止 git commit （坑：要取消 lint 校验后自动修复，否则 lint 校验后自动修复成功后能 commit 成功）
+
+```bash
+npx husky add .husky/pre-commit "npm run lint"
+```
+
+> 答：此方式 eslint 会检测项目所有文件，项目大时用的时间会过长，使用lint-staged只会检测暂存区代码
+
+### 1.安装lint-staged
+
+```bash
+npm i -D lint-staged -S
+```
+
+### 2.添加钩子
+
+```bash
+npx husky add .husky/pre-commit "npx lint-staged"
+```
+
+### 3.项目根目录下创建lint-staged.config.js文件，并写入配置
+
+```javascript
+module.exports = {
+  '*.{css,scss,vue,js,ts,json}': 'prettier --write', // 使用prettier格式化并加入暂存
+  'src/**/*.{js,ts,vue}': 'eslint --fix' // 使用eslint检验修复并加入暂存
+}
+```
+
+## 7.使用 stylelint 对 css 进行校验修复
+
+### 1.安装 stylelint
+
+```bash
+npm install -D -S stylelint
+```
+
+### 2.安装 stylelint 规则包
+
+```bash
+npm install -D -S stylelint-config-standard-scss stylelint-config-recommended-vue
+```
+
+### 3.项目根目录下新增 .stylelintrc.js 文件并使用规则
+
+```javascript
+module.exports = {
+  extends: [
+    'stylelint-config-standard-scss',
+    'stylelint-config-recommended-vue/scss'
+  ]
+}
+```
+
+### 4.配置 lint-staged.config.js 在 commit 前使用 stylelint 校验修复样式
+
+```javascript
+module.exports = {
+  '*.{css,scss,vue,js,ts,json}': 'prettier --write', // 使用prettier格式化并加入暂存
+  '*.{css,scss,vue,less,vue}': 'stylelint --fix' // 使用stylelint校验修复并加入暂存
+  'src/**/*.{js,ts,vue}': 'eslint --fix' // 使用eslint检验修复并加入暂存
+}
+```
+
+
+
+
+
+
+
+
+
