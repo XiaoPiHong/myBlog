@@ -22,7 +22,13 @@ export default defineConfig({
       {
         text: "前端工程化",
         collapsible: true,
-        items: [{ text: "vite", link: "/engineering/engineering-vite" }],
+        items: [
+          { text: "vite", link: "/engineering/engineering-vite" },
+          {
+            text: "vuecli5+vue2+ts",
+            link: "/engineering/engineering-vuecli5-vue2-ts",
+          },
+        ],
       },
       {
         text: "Vue",
