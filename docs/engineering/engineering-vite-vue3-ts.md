@@ -1,4 +1,4 @@
-# engineering-vite-vue3-ts 项目搭建
+# vite+vue3+ts 项目搭建
 
 ## 1.项目采用 pnpm 的包管理工具，所以需要全局安装 pnpm
 

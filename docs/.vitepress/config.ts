@@ -29,7 +29,7 @@ export default defineConfig({
             link: "/engineering/engineering-vuecli5-vue2-ts",
           },
           {
-            text: "vite-vue3-ts",
+            text: "vite+vue3+ts",
             link: "/engineering/engineering-vite-vue3-ts",
           },
         ],
