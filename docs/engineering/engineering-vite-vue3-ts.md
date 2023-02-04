@@ -261,7 +261,8 @@ components.d.ts
 ### 8.配置 package.json，prettier 格式化代码脚本
 
 > 问：之前配置的 eslint 不就可以对代码进行校验和修复吗，这里为什么又使用 prettier 对代码进行格式化？
-> 答：eslint 更倾向与语法的校验和修复，而 prettier 是专门对代码风格进行格式化的，我们该项目两者都使用，也就是先用 eslint 对代码的语法进行校验和修复，再用 prettier 对代码风格进行格式化
+
+> 答：eslint 更倾向于语法的校验和修复，而 prettier 是专门对代码风格进行格式化的，我们该项目两者都使用，也就是先用 eslint 对代码的语法进行校验和修复，再用 prettier 对代码风格进行格式化
 
 ```json
 "scripts": {
