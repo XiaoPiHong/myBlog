@@ -32,6 +32,10 @@ export default defineConfig({
             text: "vite+vue3+ts",
             link: "/engineering/engineering-vite-vue3-ts",
           },
+          {
+            text: "vite+react18+ts",
+            link: "/engineering/engineering-vite-react18-ts",
+          },
         ],
       },
       {
