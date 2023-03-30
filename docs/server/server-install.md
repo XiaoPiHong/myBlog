@@ -169,7 +169,7 @@ mysql> FLUSH PRIVILEGES;
 
 8. 然后又出现了下面问题
    ![](server-install.assets/server-install-3.png)
-   mysql 登录用户密码设置好后,需要开发安全组端口，并且好像上面的不是 mysql8.0 版本，因为 8.0 版本的加密方式改变了，mysql8 以后的加密规则为 caching_sha2_password，所以我们需要将 mysql 用户登录的加密规则修改为 mysql_native_password，然后安全端口设置一个(注意，由于之前改了 user，这里@"%")
+   mysql 登录用户密码设置好后,需要开发安全组端口，并且好像上面的不是 mysql8.0 版本，因为 8.0 版本的加密方式改变了，mysql8 以后的加密规则为 caching_sha2_password，所以我们需要将 mysql 用户登录的加密规则修改为 mysql_native_password(注意，由于之前改了 user，这里@"%")
 
 ```bash
 mysql> ALTER USER 'root'@'%' IDENTIFIED BY '你刚刚设置的mysql密码' PASSWORD EXPIRE NEVER;
@@ -191,4 +191,103 @@ systemctl restart mysqld.service
 
 #开机自启
 systemctl enable mysqld.service
+```
+
+## 安装 nginx
+
+下载地址：http://nginx.org/en/download.html
+
+1. 安装依赖包
+
+```bash
+yum install -y gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel
+```
+
+2. 选择 nginx 版本下载（当前下载在/usr/local）
+
+```bash
+wget http://nginx.org/download/nginx-1.23.1.tar.gz
+```
+
+3. 解压下载的压缩包
+
+```bash
+tar -xvf nginx-1.23.1.tar.gz
+```
+
+4. 配置 nginx 并安装
+
+```bash
+cd nginx-1.23.1
+./configure #配置nginx
+make
+make install
+```
+
+5. 配置软链接
+
+```bash
+ln -s /usr/local/nginx/sbin/nginx  /usr/local/bin/
+```
+
+6. 设置 nginx 开机自启
+
+```bash
+cd /etc/systemd/system
+vim nginx.service
+#设置文件权限
+chmod 755 nginx.service
+#设置开机自启动
+systemctl daemon-reload
+systemctl enable nginx
+```
+
+将下面内容粘贴进去 nginx.service（此处要注意 nginx 安装的路径，当前是在/usr/local/nginx）
+
+```
+[Unit]
+Description=nginx service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/local/nginx/sbin/nginx
+ExecReload=/usr/local/nginx/sbin/nginx -s reload
+ExecStop=/usr/local/nginx/sbin/nginx -s quit
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+```
+
+7. nginx 补充
+
+```bash
+#启动nginx服务
+systemctl start nginx
+#查看nginx运行状态
+systemctl status nginx
+#重启nginx服务
+systemctl restart nginx
+#停止nginx服务
+systemctl stop nginx
+#设置nginx服务开机自启动
+systemctl enable nginx
+#取消设置nginx服务开机自启动
+systemctl disable nginx
+```
+
+## 安装 pm2（管理 node 项目）
+
+1. 全局安装 pm2，使用 pm2 -v 查看是否安装成功
+
+```bash
+npm install pm2 -g
+```
+
+2. 使用 pm2 管理 node 项目
+
+```bash
+cd /usr/local/school_manage/server
+pm2 start app.js --name school_manage
 ```
