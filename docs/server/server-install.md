@@ -277,7 +277,9 @@ systemctl enable nginx
 systemctl disable nginx
 ```
 
-## 安装 pm2（管理 node 项目）
+## 安装 pm2
+
+管理 node 项目
 
 1. 全局安装 pm2，使用 pm2 -v 查看是否安装成功
 
@@ -290,4 +292,59 @@ npm install pm2 -g
 ```bash
 cd /usr/local/school_manage/server
 pm2 start app.js --name school_manage
+```
+
+3. 设置开机启动 pm2 管理的应用（否则重启后 pm2 管理的项目会不在）
+
+```bash
+pm2 startup #生成开机启动 pm2 服务的配置文件
+```
+
+4. 保存当前 pm2 管理的应用（将应用保存到/root/.pm2/dump.pm2 文件下，开机自启读取当前文件启动项目）
+
+```bash
+pm2 save
+```
+
+5. pm2 补充
+
+```bash
+#启动命令
+pm2 start app.js #启动nodeJs应用，进程的默认名称为文件名app
+pm2 start app.js --name mynode #启动node，并指定进程名称为mynode
+pm2 start app.js  - i max #根据有效CPU数目启动最大进程数目
+pm2 start app.js  - i 3 #启动3个进程
+pm2 start app.js --watch #实时监控的方式启动，文件有变动，pm2会自动reload（如果要忽略一些文件的变动，要单独设置）
+pm2 start app.js  - x #用fork模式启动 app.js 而不是使用 cluster
+pm2 start app.js  - x– - a 23 #用fork模式启动 app.js 并且传递参数（-a 23）
+pm2 start app.json #启动进程, 在app.json里设置选项
+pm2 start app.js  - i max– - a 23 #在 – 之后给 app.js 传递参数
+pm2 start app.js  - i max - e err.log - o out.log #启动并生成一个配置文件
+
+#查看与监视进程
+pm2 list | pm2 ls #显示所有进程；
+pm2 show 0 | pm2 info 0 #查看进程id为0的详细信息
+pm2 monit #进入监视页面，监视每个node进程的CPU和内存的使用情况
+
+#停止、删除进程
+pm2 stop 0 #停止id为0的进程
+pm2 stop all #停止所有进程
+pm2 delete 0 #删除id为0的进程
+pm2 delete all #删除所有进程
+
+#重启、重载
+pm2 restart 0 #重启id为0的进程
+pm2 restart all #重启所有进程
+pm2 reload 0 #0秒停机重载id为0进程（用于 NETWORKED 进程）
+pm2 reload all #重载所有进程
+
+#日志操作
+pm2 logs #显示所有进程的日志
+pm2 logs 0 #显示进程id为0的日志
+pm2 flush #清空所有日志文件
+pm2 reloadLogs #重载所有日志
+pm2 startup #产生init脚本，保持进程活着
+
+#杀死PM2进程
+pm2 kill
 ```
