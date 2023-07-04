@@ -53,11 +53,11 @@
 
 **行内脚本：直接在 HTML 文件中嵌入 JavaScript 代码**
 
-**外部文件脚本：<script src="mainA.js"></script>**
+**外部文件脚本：\<script src="mainA.js"\>\</script>**
 
 ### 动态加载脚本
 
-除了<script>标签，还有其他方式可以加载脚本。因为 JavaScript 可以使用 DOM API，所以通过
+除了 script 标签，还有其他方式可以加载脚本。因为 JavaScript 可以使用 DOM API，所以通过
 向 DOM 中动态添加 script 元素同样可以加载指定的脚本。只要创建一个 script 元素并将其添加到
 DOM 即可。
 
@@ -67,7 +67,7 @@ script.src = "gibberish.js";
 document.head.appendChild(script);
 ```
 
-当然，在把 HTMLElement 元素添加到 DOM 且执行到这段代码之前不会发送请求。默认情况下， 以这种方式创建的<script>元素是以异步方式加载的，相当于添加了 async 属性。不过这样做可能会 有问题，因为所有浏览器都支持 createElement()方法，但不是所有浏览器都支持 async 属性。因此， 如果要统一动态脚本的加载行为，可以明确将其设置为同步加载：
+当然，在把 HTMLElement 元素添加到 DOM 且执行到这段代码之前不会发送请求。默认情况下， 以这种方式创建的 script 元素是以异步方式加载的，相当于添加了 async 属性。不过这样做可能会 有问题，因为所有浏览器都支持 createElement()方法，但不是所有浏览器都支持 async 属性。因此， 如果要统一动态脚本的加载行为，可以明确将其设置为同步加载：
 
 ```javascript
 let script = document.createElement("script");
@@ -78,10 +78,10 @@ document.head.appendChild(script);
 
 以这种方式获取的资源对浏览器预加载器是不可见的。这会严重影响它们在资源获取队列中的优先级。根据应用程序的工作方式以及怎么使用，这种方式可能会严重影响性能。要想让预加载器知道这些动态请求文件的存在，可以在文档头部显式声明它们：
 
-<link rel="preload" href="gibberish.js">
+\<link rel="preload" href="gibberish.js"\>
 需要注意的是，预加载并不保证脚本的立即执行。预加载只是将资源下载到缓存中，而脚本的执行时机仍然取决于它们在 HTML 中的位置和其他相关因素。
 
-**通过在 <link> 标签中使用 preload 属性加载 JavaScript 脚本，可以带来以下好处：**
+**通过在 \<link\> 标签中使用 preload 属性加载 JavaScript 脚本，可以带来以下好处：**
 
 1.预加载资源：浏览器在加载页面时会预先下载被标记为 preload 的资源，这包括 JavaScript 脚本文件。这样，当脚本实际需要执行时，浏览器可以直接从缓存中获取，减少了网络请求的延迟和传输时间。
 
@@ -91,7 +91,7 @@ document.head.appendChild(script);
 
 ### script 标签的加载（下载到执行的过程）
 
-所有<script>元素会依照它们在网页中出现的次序被解释。在不使用 defer 和 async 属性的 情况下，包含在<script>元素中的代码必须严格按次序解释。（会阻塞页面的渲染，加载完一个之后才能继续加载第二个）
+所有 script 元素会依照它们在网页中出现的次序被解释。在不使用 defer 和 async 属性的 情况下，包含在 script 元素中的代码必须严格按次序解释。（会阻塞页面的渲染，加载完一个之后才能继续加载第二个）
 
 <table style="table-layout: auto; border-collapse: collapse;">
   <tr>
@@ -122,9 +122,9 @@ document.head.appendChild(script);
 
 ### 小结
 
-**所有<script>元素会依照它们在网页中出现的次序被解释。在不使用 defer 和 async 属性的 情况下，包含在<script>元素中的代码必须严格按次序解释。**
+**所有 script 元素会依照它们在网页中出现的次序被解释。在不使用 defer 和 async 属性的 情况下，包含在 script 元素中的代码必须严格按次序解释。**
 
-**对不推迟执行的脚本，浏览器必须解释完位于<script>元素中的代码，然后才能继续渲染页面的剩余部分。为此，通常应该把<script>元素放到页面末尾，介于主内容之后及</body>标签 之前。**
+**对不推迟执行的脚本，浏览器必须解释完位于 script 元素中的代码，然后才能继续渲染页面的剩余部分。为此，通常应该把 script 元素放到页面末尾，介于主内容之后及\</body\>标签 之前。**
 
 **可以使用 defer 属性把脚本推迟到 HTML 文档解析完成并且所有 DOM 元素都可用后（DOMContentLoaded 事件之前）再执行。推迟的脚本原则上按照它们被列出的次序执行。**
 
