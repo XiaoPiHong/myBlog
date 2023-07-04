@@ -80,7 +80,8 @@ export default defineConfig({
         text: "其他",
         collapsible: true,
         items: [
-          { text: "script标签执行顺序", link: "/other/other-script" },
+          { text: "script标签", link: "/other/other-script" },
+          { text: "迭代器", link: "/other/other-iterator" },
           { text: "git使用", link: "/other/other-git" },
         ],
       },
