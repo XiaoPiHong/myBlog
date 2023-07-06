@@ -144,3 +144,123 @@ Promise.all()接收由期约组成的可迭代对象
 Promise.race()接收由期约组成的可迭代对象
 
 yield\*操作符，在生成器中使用
+
+## 提前终止迭代器
+
+提前终止迭代器就是想在可迭代对象耗尽前“关闭”迭代器。
+
+#### 何时会“关闭“迭代器
+
+以下情况都可能是**（为什么说可能，因为能否关闭迭代器，取决于迭代器对象有没有定义 return()方法，<u>注意：给迭代器对象动态添加 return()方法也是不能主动关闭迭代器的</u>）**在可迭代对象耗尽前“关闭”迭代器：
+
+1、for-of 循环通过 break、continue、return 或 throw 提前退出；
+
+2、解构操作并未消费所有值。
+
+#### 定义 return()方法“关闭”迭代器
+
+return()方法必须返回一个有效的 IteratorResult 对象。简单情况下，可以只返回{ done: true }。 因为这个返回值只会用在生成器的上下文中。下面是例子：
+
+```javascript
+class Counter {
+  constructor(limit) {
+    this.limit = limit;
+  }
+  [Symbol.iterator]() {
+    let count = 1,
+      limit = this.limit;
+    return {
+      next() {
+        if (count <= limit) {
+          return { done: false, value: count++ };
+        } else {
+          return { done: true };
+        }
+      },
+      // 内置语言结构在发现还有更多值可以迭代，但不会消费这些值时，会自动调用 return()方法
+      return() {
+        console.log("Exiting early");
+        return { done: true };
+      },
+    };
+  }
+}
+let counter1 = new Counter(5);
+for (let i of counter1) {
+  if (i > 2) {
+    break;
+  }
+  console.log(i);
+}
+// 1
+// 2
+// Exiting early
+
+//=============================================================
+class Counter {
+  constructor(limit) {
+    this.limit = limit;
+  }
+  [Symbol.iterator]() {
+    let count = 1,
+      limit = this.limit;
+    return {
+      next() {
+        if (count <= limit) {
+          return { done: false, value: count++ };
+        } else {
+          return { done: true };
+        }
+      },
+      return() {
+        console.log("Exiting early");
+        return { done: true };
+      },
+    };
+  }
+}
+let counter1 = new Counter(5);
+for (let i of counter1) {
+  if (i > 2) {
+    break;
+  }
+  console.log(i);
+}
+// 1
+// 2
+// Exiting early
+let counter2 = new Counter(5);
+try {
+  for (let i of counter2) {
+    if (i > 2) {
+      throw "err";
+    }
+    console.log(i);
+  }
+} catch (e) {}
+// 1
+// 2
+// Exiting early
+let counter3 = new Counter(5);
+let [a, b] = counter3;
+// Exiting early
+
+// =======================================================================================
+//如果迭代器没有关闭，则还可以继续从上次离开的地方继续迭代。比如，数组的迭代器就是不能关闭的：
+let a = [1, 2, 3, 4, 5];
+let iter = a[Symbol.iterator]();
+for (let i of iter) {
+  console.log(i);
+  if (i > 2) {
+    break;
+  }
+}
+// 1
+// 2
+// 3
+for (let i of iter) {
+  console.log(i);
+}
+// 4
+// 5
+```
