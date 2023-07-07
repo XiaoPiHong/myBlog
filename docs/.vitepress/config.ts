@@ -82,6 +82,7 @@ export default defineConfig({
         items: [
           { text: "script标签", link: "/other/other-script" },
           { text: "迭代器", link: "/other/other-iterator" },
+          { text: "生成器", link: "/other/other-generator" },
           { text: "git使用", link: "/other/other-git" },
         ],
       },
