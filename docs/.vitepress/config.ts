@@ -48,6 +48,13 @@ export default defineConfig({
         ],
       },
       {
+        text: "TypeScript",
+        collapsible: true,
+        items: [
+          { text: "interface", link: "/typescript/typescript-interface" },
+        ],
+      },
+      {
         text: "Http",
         collapsible: true,
         items: [
