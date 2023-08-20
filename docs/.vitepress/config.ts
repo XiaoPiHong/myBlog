@@ -52,6 +52,7 @@ export default defineConfig({
         collapsible: true,
         items: [
           { text: "interface", link: "/typescript/typescript-interface" },
+          { text: "type", link: "/typescript/typescript-type" },
         ],
       },
       {

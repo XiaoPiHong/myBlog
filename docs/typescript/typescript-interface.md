@@ -70,3 +70,45 @@ const tableAction = new TableAction({
 });
 const options = tableAction.getField("options"); // const options: ActionItem[]
 ```
+
+## 约束一个对象传入的属性只能是接口中的属性
+
+```typescript
+interface Person {
+  name: string;
+  age: number;
+}
+
+function printPartialPerson(person: Partial<Person>) {
+  console.log(`Name: ${person.name}, Age: ${person.age}`);
+}
+
+const validPartialPerson: Partial<Person> = { name: "Alice", age: 25 };
+const invalidPartialPerson = { name: "Bob", gender: "male" }; // 包含额外的属性
+
+printPartialPerson(validPartialPerson); // 输出: Name: Alice, Age: 25
+printPartialPerson(invalidPartialPerson); // TypeScript 编译时会报错，因为包含了额外的属性
+```
+
+## 给对象数组定义一个类型，可以存储不同类型的对象元素
+
+```typescript
+// 这里把interface改成type也可以实现
+interface Circle {
+  type: "circle";
+  radius: number;
+}
+
+interface Rectangle {
+  type: "rectangle";
+  width: number;
+  height: number;
+}
+
+type Shape = Circle | Rectangle; // 这样是一个联合类型
+
+const circle: Circle = { type: "circle", radius: 5 };
+const rectangle: Rectangle = { type: "rectangle", width: 10, height: 20 };
+
+const shapes: Shape[] = [circle, rectangle];
+```
