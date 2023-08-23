@@ -1,13 +1,32 @@
 # 样式穿透
 
-## 理解scoped原理
+## 理解 scoped 原理
 
-> 1.当你想私有当前组件的样式，vue组件中可以使用scoped属性，scoped底层是通过在DOM节点中添加data-v-xxx，CSS中通过添加[data-v-xxx]属性过滤，提高优先级，来实现样式的私有化；
+> 1.当你想私有当前组件的样式，vue 组件中可以使用 scoped 属性，scoped 底层是通过在 DOM 节点中添加 data-v-xxx，CSS 中通过添加[data-v-xxx]属性过滤，提高优先级，来实现样式的私有化；
 >
-> 2.当前组件使用了scoped时，会在当前vue组件的根元素 和 子孙组件的根元素 和当前vue组件的html标签上 加上data-v-xxx属性。
+> 2.当前组件使用了 scoped 时，会在当前 vue 组件的根元素 和 子孙组件的根元素 和当前 vue 组件的 html 标签上 加上 data-v-xxx 属性。
 
-## 何时使用样式穿透deep
+## 何时使用样式穿透 deep
 
-> 1.当你想修改一个组件内部的元素样式，但是该元素并不是当前vue组件的根元素， 也不是当前vue组件的子孙组件的根元素，也不是当前vue组件的html标签时就要使用样式穿透；
+> 1.当你想修改一个组件内部的元素样式，但是该元素并不是当前 vue 组件的根元素， 也不是当前 vue 组件的子孙组件的根元素，也不是当前 vue 组件的 html 标签时就要使用样式穿透；
 >
-> 2.一般来说要想修改当前vue组件引用的组件的内部样式，我们就使用样式穿透，这样可以让别人快速知道当前的这个类名或者其他的css选择器是属于当前引用的这个组件的。
+> 2.一般来说要想修改当前 vue 组件引用的组件的内部样式，我们就使用样式穿透，这样可以让别人快速知道当前的这个类名或者其他的 css 选择器是属于当前引用的这个组件的。
+
+<script setup>
+import { ref } from 'vue'
+
+const count = ref(0)
+</script>
+
+## Markdown Content
+
+The count is: {{ count }}
+
+<button :class="$style.button" @click="count++">Increment</button>
+
+<style module>
+.button {
+  color: red;
+  font-weight: bold;
+}
+</style>
