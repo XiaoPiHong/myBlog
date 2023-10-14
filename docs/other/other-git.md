@@ -215,3 +215,17 @@ stash 储藏注意事项：
 6.git push origin --tags （推送本地所有标签到远端服务器）
 
 7.git ls-remote --tags （查看远端服务器标签）
+
+## git 子模块（submodule）
+
+子模块就是在主仓库中可以嵌套另外一个子仓库，两个仓库相互独立，互不影响
+
+1、git submodule add http://192.168.x.xx/FMS/Web.git project/fy/fms/Web（在 note 仓库中执行该命令，会自动拉取远程 Web 仓库到本地 note 目录中的 project/fy/fms 中，此时 Web 仓库就是 note 仓库的子模块，注意：fms 目录中不能包含 Web 这个目录）
+
+2、git add .（暂存）
+
+3、git commit -m "Add submodule: project/fy/fms/Web"（提交到远程 note 仓库）
+
+4、注意：子模块每切换一次分支，主模块都会记录这个子模块的分支变更，这个变更是记录子模块当前分支的，这个变更可以按需求提交到远端仓库
+
+5、注意：创建的子模块的变更并不会提交到主模块仓库，主模块只是记录了当前子模块的分支还是远程仓库地址，子模块的文件变更还是子模块单独管理
