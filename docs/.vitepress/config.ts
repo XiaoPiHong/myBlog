@@ -63,7 +63,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: "jsonp", link: "/http/http-jsonp" },
-          { text: "Http缓存", link: "/http/http-cache" },
+          // { text: "Http缓存", link: "/http/http-cache" },
         ],
       },
       {
