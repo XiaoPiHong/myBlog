@@ -1,4 +1,4 @@
-# 1.javascript 原型
+# 1. javascript 原型
 
 ## 1.1 什么是原型
 

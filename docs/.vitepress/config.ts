@@ -95,6 +95,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: "jsonp", link: "/network/network-jsonp" },
+          { text: "jwt", link: "/network/network-jwt" },
           // {
           //   text: "Http",
           //   collapsed: false,
