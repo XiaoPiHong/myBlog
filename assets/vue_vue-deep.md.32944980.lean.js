@@ -1,0 +1,1 @@
+import{_ as e,o as a,c as t,X as o}from"./chunks/framework.af6290ec.js";const v=JSON.parse('{"title":"样式穿透","description":"","frontmatter":{},"headers":[],"relativePath":"vue/vue-deep.md","filePath":"vue/vue-deep.md"}'),d={name:"vue/vue-deep.md"},c=o("",5),s=[c];function p(r,u,l,n,_,i){return a(),t("div",null,s)}const x=e(d,[["render",p]]);export{v as __pageData,x as default};
