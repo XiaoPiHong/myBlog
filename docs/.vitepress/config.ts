@@ -47,7 +47,7 @@ export default defineConfig({
         items: [
           { text: "vue2.x双向绑定原理", link: "/vue/vue-vue2-principle" },
           { text: "vue3.x双向绑定原理", link: "/vue/vue-vue3-principle" },
-          { text: "样式穿透", link: "/vue/vue-deep" },
+          { text: "样式穿透 & scoped", link: "/vue/vue-deep" },
         ],
       },
       {
@@ -75,11 +75,27 @@ export default defineConfig({
         ],
       },
       {
-        text: "原型",
+        text: "JavaScript",
         collapsed: false,
         items: [
-          { text: "原型与原型链", link: "/prototype/prototype-prototypeChain" },
-          { text: "继承", link: "/prototype/prototype-extend" },
+          {
+            text: "ECMAScript",
+            collapsed: false,
+            items: [
+              { text: "迭代器", link: "/js/es/es-iterator" },
+              { text: "生成器", link: "/js/es/es-generator" },
+              {
+                text: "原型与原型链",
+                link: "/js/es/es-prototypeChain",
+              },
+              { text: "继承", link: "/js/es/es-extend" },
+            ],
+          },
+          {
+            text: "Document Object Model",
+            collapsed: false,
+            items: [{ text: "script标签", link: "/js/dom/dom-script" }],
+          },
         ],
       },
       {
@@ -90,12 +106,7 @@ export default defineConfig({
       {
         text: "其他",
         collapsed: false,
-        items: [
-          { text: "script标签", link: "/other/other-script" },
-          { text: "迭代器", link: "/other/other-iterator" },
-          { text: "生成器", link: "/other/other-generator" },
-          { text: "git使用", link: "/other/other-git" },
-        ],
+        items: [{ text: "git使用", link: "/other/other-git" }],
       },
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/XiaoPiHong" }],

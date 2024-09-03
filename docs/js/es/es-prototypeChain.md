@@ -15,7 +15,7 @@ console.dir(Person);
 console.dir(per);
 ```
 
-![](prototype-prototypeChain.assets/prototype-prototypeChain-1.png)
+![](es-prototypeChain.assets/es-prototypeChain-1.png)
 
 > 可以看到：构造函数里面有一个 prototype 属性，实力对象里面有一个**proto**属性，这两个属性都叫原型，也叫原型对象。
 > 需要注意的是：原型**proto**一般是给浏览器使用的，不是标准的属性，为什么这样说，因为 ie8 里面是没有这个属性的。而原型 prototype 才是程序员会使用到的，是一个标准的属性。
@@ -41,7 +41,7 @@ var per = new Person();
 Person.prototype.constructor === Person; //true
 ```
 
-![在这里插入图片描述](prototype-prototypeChain.assets/prototype-prototypeChain-2.png)
+![在这里插入图片描述](es-prototypeChain.assets/es-prototypeChain-2.png)
 
 而在原型对象 prototype 中，有一个属性 constructor 构造器,根据上面输出的结果我们通常就会说这个 constructor 构造器指向的就是自己所在的原型对象 prototype 所在的构造函数。
 **所以就也得出了一个结论：** 构造函数的原型对象(prototype)中有一个 constructor 构造器,这个构造器指向的就是自己所在的原型对象所在的构造函数。
@@ -49,7 +49,7 @@ Person.prototype.constructor === Person; //true
 ## 1.3 构造函数与原型对象与实例对象三者的关系
 
 好了，现在大概知道原型**proto**与原型 prototype 之间的关系、构造函数与原型之间的关系之后，我们就可以画出一个关系图（这些关系有什么用，下面 1.4 会说到），这样看的更明了：
-![在这里插入图片描述](prototype-prototypeChain.assets/prototype-prototypeChain-3.png)
+![在这里插入图片描述](es-prototypeChain.assets/es-prototypeChain-3.png)
 
 ## 1.4 原型的作用
 
@@ -134,7 +134,7 @@ teacher.eat(); //吃
 ```
 
 我们将 **Teacher.prototype = new Person()** 之后，如果输出 **console.dir(Teacher)** 构造函数你会发现如下图：
-![在这里插入图片描述](prototype-prototypeChain.assets/prototype-prototypeChain-4.png)
+![在这里插入图片描述](es-prototypeChain.assets/es-prototypeChain-4.png)
 js 实现继承的原理就是改变了原型 prototype 的指向，现在 Teacher 的 prototype 指向了 new Person()后的一个实例对象，所以我们用 Teacher 创建出来的实例对象，也是有 Person 构造函数的属性和方法的，这样就可以说 Teacher 继承了 Person。
 
 # 2.javascript 原型链
@@ -175,7 +175,7 @@ console.log(Object.prototype.__proto__); //null
 ```
 
 **下面我们把这条原型链画出来：**
-![在这里插入图片描述](prototype-prototypeChain.assets/prototype-prototypeChain-5.png)
+![在这里插入图片描述](es-prototypeChain.assets/es-prototypeChain-5.png)
 **总结：**
 **1.原型链：** 是一种关系,实例对象和原型对象 prototype 之间的关系,关系是通过原型**proto**来联系的。
 **2.原型链最终指向是：** 原型链最终的指向是 Object 的 prototype 中的**proto**是 null。

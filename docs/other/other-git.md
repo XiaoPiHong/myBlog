@@ -220,7 +220,7 @@ stash 储藏注意事项：
 
 子模块就是在主仓库中可以嵌套另外一个子仓库，两个仓库相互独立，互不影响
 
-1、git submodule add http://192.168.x.xx/FMS/Web.git project/fy/fms/Web（在 note 仓库中执行该命令，会自动拉取远程 Web 仓库到本地 note 目录中的 project/fy/fms 中，此时 Web 仓库就是 note 仓库的子模块，注意：fms 目录中不能包含 Web 这个目录）
+1、git submodule add http://192.168.1.210/FMS/Web.git project/fy/fms/Web（在 note 仓库中执行该命令，会自动拉取远程 Web 仓库到本地 note 目录中的 project/fy/fms 中，此时 Web 仓库就是 note 仓库的子模块，注意：fms 目录中不能包含 Web 这个目录）
 
 2、git add .（暂存）
 

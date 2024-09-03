@@ -11,22 +11,3 @@
 > 1.当你想修改一个组件内部的元素样式，但是该元素并不是当前 vue 组件的根元素， 也不是当前 vue 组件的子孙组件的根元素，也不是当前 vue 组件的 html 标签时就要使用样式穿透；
 >
 > 2.一般来说要想修改当前 vue 组件引用的组件的内部样式，我们就使用样式穿透，这样可以让别人快速知道当前的这个类名或者其他的 css 选择器是属于当前引用的这个组件的。
-
-<script setup>
-import { ref } from 'vue'
-
-const count = ref(0)
-</script>
-
-## Markdown Content
-
-The count is: {{ count }}
-
-<button :class="$style.button" @click="count++">Increment</button>
-
-<style module>
-.button {
-  color: red;
-  font-weight: bold;
-}
-</style>
