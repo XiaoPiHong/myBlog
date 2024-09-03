@@ -42,39 +42,6 @@ export default defineConfig({
         ],
       },
       {
-        text: "Vue",
-        collapsed: false,
-        items: [
-          { text: "vue2.x双向绑定原理", link: "/vue/vue-vue2-principle" },
-          { text: "vue3.x双向绑定原理", link: "/vue/vue-vue3-principle" },
-          { text: "样式穿透 & scoped", link: "/vue/vue-deep" },
-        ],
-      },
-      {
-        text: "TypeScript",
-        collapsed: false,
-        items: [
-          { text: "interface", link: "/typescript/typescript-interface" },
-          { text: "type", link: "/typescript/typescript-type" },
-        ],
-      },
-      {
-        text: "Http",
-        collapsed: false,
-        items: [
-          { text: "jsonp", link: "/http/http-jsonp" },
-          // { text: "Http缓存", link: "/http/http-cache" },
-        ],
-      },
-      {
-        text: "文件",
-        collapsed: false,
-        items: [
-          { text: "文件操作", link: "/file/file-operation" },
-          { text: "文件下载", link: "/file/file-download" },
-        ],
-      },
-      {
         text: "JavaScript",
         collapsed: false,
         items: [
@@ -96,6 +63,43 @@ export default defineConfig({
             collapsed: false,
             items: [{ text: "script标签", link: "/js/dom/dom-script" }],
           },
+        ],
+      },
+      {
+        text: "Vue",
+        collapsed: false,
+        items: [
+          { text: "vue2.x双向绑定原理", link: "/vue/vue-vue2-principle" },
+          { text: "vue3.x双向绑定原理", link: "/vue/vue-vue3-principle" },
+          { text: "样式穿透 & scoped", link: "/vue/vue-deep" },
+        ],
+      },
+      {
+        text: "文件",
+        collapsed: false,
+        items: [
+          { text: "文件操作", link: "/file/file-operation" },
+          { text: "文件下载", link: "/file/file-download" },
+        ],
+      },
+      // {
+      //   text: "TypeScript",
+      //   collapsed: false,
+      //   items: [
+      //     { text: "interface", link: "/typescript/typescript-interface" },
+      //     { text: "type", link: "/typescript/typescript-type" },
+      //   ],
+      // },
+      {
+        text: "网络",
+        collapsed: false,
+        items: [
+          { text: "jsonp", link: "/network/network-jsonp" },
+          // {
+          //   text: "Http",
+          //   collapsed: false,
+          //   items: [{ text: "http缓存", link: "/network/http/http-cache" }],
+          // },
         ],
       },
       {
