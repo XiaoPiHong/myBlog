@@ -80,6 +80,7 @@ export default defineConfig({
         items: [
           { text: "文件操作", link: "/file/file-operation" },
           { text: "文件下载", link: "/file/file-download" },
+          { text: "分块上传", link: "/file/file-split-chunks-upload" },
         ],
       },
       // {
