@@ -4,7 +4,7 @@
 - 📍 目前居住在**广东广州**
 - 📫 与我联系 **xiaopihong0325@qq.com**
 
-### 语言和工具:
+### 语言和工具：
 
 <table style="table-layout: auto; border-collapse: collapse;">
   <tr>
@@ -15,6 +15,9 @@
   </tr>
 </table>
 
-### 博客:
+### 我的案例：
 
 - [个人博客](https://xiaopihong.github.io/myBlog/)
+- [xph-crud 可配置组件库](https://xiaopihong.github.io/xph-crud/)
+- [xph-form 可配置表单](https://www.npmjs.com/package/xph-form)
+- [vite-plugin-cwv 版本检测工具](https://www.npmjs.com/package/vite-plugin-cwv)
