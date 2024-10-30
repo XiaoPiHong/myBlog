@@ -122,6 +122,7 @@ export default defineConfig({
         items: [
           { text: "浏览器渲染机制", link: "/other/other-rendering" },
           { text: "script标签", link: "/other/other-script" },
+          { text: "Performance工具", link: "/other/other-performance" },
           { text: "git使用", link: "/other/other-git" },
         ],
       },
