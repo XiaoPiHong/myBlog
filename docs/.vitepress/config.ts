@@ -72,6 +72,14 @@ export default defineConfig({
           // },
         ],
       },
+      // {
+      //   text: "TypeScript",
+      //   collapsed: false,
+      //   items: [
+      //     { text: "interface", link: "/typescript/typescript-interface" },
+      //     { text: "type", link: "/typescript/typescript-type" },
+      //   ],
+      // },
       {
         text: "Vue",
         collapsed: false,
@@ -90,14 +98,6 @@ export default defineConfig({
           { text: "分块上传", link: "/file/file-split-chunks-upload" },
         ],
       },
-      // {
-      //   text: "TypeScript",
-      //   collapsed: false,
-      //   items: [
-      //     { text: "interface", link: "/typescript/typescript-interface" },
-      //     { text: "type", link: "/typescript/typescript-type" },
-      //   ],
-      // },
       {
         text: "网络",
         collapsed: false,
