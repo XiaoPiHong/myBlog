@@ -1,19 +1,5 @@
 # script 标签
 
-### 浏览器如何渲染 html
-
-**浏览器在接收到 html 文件后，会分几个步骤将 html 文件转化成界面，这个过程就是渲染。**
-
-**1、解析 html**
-
-**2、构建 dom 树**
-
-**3、dom 树结合 css 文件，构建呈现树**
-
-**4、布局（回流）**
-
-**5、绘制（重绘）**
-
 ### script 标签的常用属性
 
 <table style="table-layout: auto; border-collapse: collapse;">

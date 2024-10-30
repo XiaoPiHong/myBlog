@@ -58,11 +58,18 @@ export default defineConfig({
               { text: "继承", link: "/js/es/es-extend" },
             ],
           },
-          {
-            text: "Document Object Model",
-            collapsed: false,
-            items: [{ text: "script标签", link: "/js/dom/dom-script" }],
-          },
+          // 文档对象模型
+          // {
+          //   text: "Document Object Model",
+          //   collapsed: false,
+          //   items: [],
+          // },
+          // 浏览器对象模型
+          // {
+          //   text: "Browser Object Model",
+          //   collapsed: false,
+          //   items: [],
+          // },
         ],
       },
       {
@@ -112,7 +119,11 @@ export default defineConfig({
       {
         text: "其他",
         collapsed: false,
-        items: [{ text: "git使用", link: "/other/other-git" }],
+        items: [
+          { text: "浏览器渲染机制", link: "/other/other-rendering" },
+          { text: "script标签", link: "/other/other-script" },
+          { text: "git使用", link: "/other/other-git" },
+        ],
       },
     ],
     socialLinks: [{ icon: "github", link: "https://github.com/XiaoPiHong" }],
