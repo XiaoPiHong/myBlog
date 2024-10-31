@@ -25,4 +25,124 @@ Performance 工具是用于分析和优化网页或应用性能的工具，帮�
 
 ### 概述面板
 
+#### FPS
+
+全称 Frames Per Second，表示每秒传输帧数，是速度单位，用来分析动画的一个主要性能指标。 如下图所示，红色线段代表 FPS 非常低，而绿色条越高，FPS 越高。（新版本的 chrome 没有显示 FPS 标识，只有帧率低的时候会显示红色条）
+
 ![](other-performance.assets/other-performance-2.png)
+
+`帧数`（Frame Count）是指图像、视频或动画文件中包含的总帧数。每一帧代表一个静态画面，多个帧按顺序播放就形成了连续的视觉效果。帧数和帧率一起决定了视频的总时长和流畅度：
+
+- 帧数 = 帧率 × 时长：比如一个 10 秒的 24 FPS 的视频帧数为 24 × 10 = 240 24×10=240 帧。
+
+帧数越多，视频文件通常会更大，但也可以提供更高的分辨率或更细致的动作过程。
+
+`帧率`（Frame Rate），也称为每秒帧数（Frames Per Second，FPS），是指图像、视频或动画中每秒钟所显示的帧数。帧率越高，画面越流畅，越接近人眼的视觉体验；帧率越低，画面会显得卡顿或不连贯。
+
+常见的帧率包括：
+
+- 24 FPS：常用于电影，因为这种帧率能带来略微的“电影感”。
+- 30 FPS：常用于电视广播和一些视频内容，流畅度较高。
+- 60 FPS：常用于高清视频、电子游戏和高要求的实时渲染，使画面更平滑。
+- 120 FPS 及更高：用于高端游戏和高刷新率显示器，提供极致流畅的视觉体验。
+- 帧率的选择通常取决于应用场景和硬件能力，例如在电影制作、游戏设计和虚拟现实等领域，帧率的需求各不相同。
+
+#### CPU
+
+CPU 资源占用情况。此面积图指示消耗 CPU 资源的事件类型。
+下图中颜色分别为（与数据统计中的颜色数据表示一致）：
+
+- 蓝色(Loading)：表示网络通信和 HTML 解析时间。
+- 黄色(Scripting)：表示 JavaScript 执行时间。
+- 紫色(Rendering)：表示样式计算和布局（重排）时间。
+- 绿色(Painting)：表示重绘时间。
+- 灰色(other)：表示其它事件花费的时间。
+- 白色(Idle)：表示空闲时间（无痕模式就是黑色部分）。
+
+![](other-performance.assets/other-performance-3.png)
+
+#### NET
+
+Network 概览。深蓝色表示存在高优先级的资源请求的时间段，浅蓝色表示存在低优先级的资源请求的时间段。
+
+Net 下方显示的是对应时间轴显示的图像
+
+![](other-performance.assets/other-performance-4.png)
+
+#### Network
+
+可以看出网络请求的详细情况。调试 network 可以使用 DevTools 的 Network 面板
+
+![](other-performance.assets/other-performance-5.png)
+
+#### Frames
+
+表示每帧的运行情况。将鼠标悬停在其中一个绿色方块上。DevTools 会显示特定帧的处理时长。根据 60 FPS 的标准 每帧的时间应该约为 16.7ms。通过这个可以判断 FPS 是否异常，以及那些帧存在问题。
+
+![](other-performance.assets/other-performance-6.png)
+
+#### Timings
+
+点击`开始并重新加载记录`时会显示此行，用于调试应用的首屏性能。
+
+![](other-performance.assets/other-performance-7.png)
+
+- FP（first paint）：首个像素开始绘制到屏幕上的时机，例如一个页面的背景色
+- FCP（first contentful paint）：开始绘制内容的时机，如文字或图片
+- LCP（Largest Contentful Paint）：视口内可见的最大内容元素的渲染时间
+- FMP（First Meaningful Paint）：首次有意义的绘制
+- DCL（DOMContentLoaded）：表示 HTML 已经完全被加载和解析
+- L（Onload）:页面所有资源加载完成事件
+
+#### Main
+
+主线程活动。通过倒置的火焰图展示主线程上发生的活动，x 轴表示随时间的记录。y 轴代表调用堆栈。上层的事件调用（触发）了下层的事件（anonymous 代表匿名函数），火焰图顶层宽度越大就表示该活动可能存在性能问题。
+
+每一个条形代表一个事件，条形越长，消耗时间越长。当看到图形堆叠，表示同一时间处理事件较高。可能会导致性能问题。面板中会有很多的 Task，如果是耗时长的 Task，其右上角会显示红色三角，这个时候就可以选中标红的 Task，定位到耗时函数，然后针对性去优化。
+
+**查看长任务**
+
+- 火焰图顶部（根部）由很多任务（Task）组成，使用灰色背景色区分。鼠标悬浮上去可以看到任务的总耗时。
+
+**查看代码位置和执行时间**
+
+- 通过某个 Task 下的代码块会对应显示该代码对应位置以及执行时间
+
+![](other-performance.assets/other-performance-8.png)
+
+#### Thread pool
+
+线程池
+![](other-performance.assets/other-performance-9.png)
+
+#### Details 详情
+
+`Summary`： 各类型事件所消耗时长的饼状图总览。通过对比各项时长，可以判断是否存在异常。通常整体当中的 Idle 占比较多是比较期望的情况。如果其他内容占比较多，我们就可以去看一下它占比多的原因。
+
+- 黄色(Scripting)：JavaScript 执行
+
+- 紫色(Rendering)：样式计算和布局，即重排
+
+- 绿色(Painting)：重绘
+
+- 灰色(other)：其它事件
+
+- 白色(Idle)：空闲
+
+![](other-performance.assets/other-performance-10.png)
+
+`Bottom-Up`：表示事件时长排序列表，可以查看花费最多时间的活动。
+
+- Self Time：指除去子事件这个事件本身消耗的时间
+
+- Total Ttime：这个事件从开始到结束消耗的时间（包含子事件）
+
+![](other-performance.assets/other-performance-11.png)
+
+`Call Tree`：表示事件调用顺序列表，可以查看导致最多工作的根活动
+
+![](other-performance.assets/other-performance-12.png)
+
+`Event Log`：表示事件发生的顺序列表，可以看到事件的开始触发时间 start time，根据记录期间的活动顺序查看活动，右边有事件描述信息
+
+![](other-performance.assets/other-performance-13.png)
