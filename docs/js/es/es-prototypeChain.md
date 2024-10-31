@@ -1,6 +1,6 @@
-# 1. javascript 原型
+# javascript 原型
 
-## 1.1 什么是原型
+## 什么是原型
 
 注意：理解原型之前首先要知道什么是**构造函数**。在 JavaScript 中，用 new 关键字来调用的函数，称为构造函数。构造函数首字母一般大写（规范）。
 
@@ -20,9 +20,9 @@ console.dir(per);
 > 可以看到：构造函数里面有一个 prototype 属性，实力对象里面有一个**proto**属性，这两个属性都叫原型，也叫原型对象。
 > 需要注意的是：原型**proto**一般是给浏览器使用的，不是标准的属性，为什么这样说，因为 ie8 里面是没有这个属性的。而原型 prototype 才是程序员会使用到的，是一个标准的属性。
 
-## 1.2 原型的指向
+## 原型的指向
 
-### 1.2.1 实例对象的原型**proto**的指向
+### 实例对象的原型**proto**的指向
 
 ```javascript
 function Person() {}
@@ -33,7 +33,7 @@ per.__proto__ === Person.prototype; //true
 在控制台中输出上面的语句会输出 true，所以这里我们通常就会说实例对象 per 的原型**proto**，指向了构造函数 Person 的原型 prototype。
 **所以就得出了一个结论：** 实例对象的**proto**指向了构造函数的原型对象 prototype。
 
-### 1.2.2 构造函数的原型对象 prototype 的构造器的指向
+### 构造函数的原型对象 prototype 的构造器的指向
 
 ```javascript
 function Person() {}
@@ -46,16 +46,16 @@ Person.prototype.constructor === Person; //true
 而在原型对象 prototype 中，有一个属性 constructor 构造器,根据上面输出的结果我们通常就会说这个 constructor 构造器指向的就是自己所在的原型对象 prototype 所在的构造函数。
 **所以就也得出了一个结论：** 构造函数的原型对象(prototype)中有一个 constructor 构造器,这个构造器指向的就是自己所在的原型对象所在的构造函数。
 
-## 1.3 构造函数与原型对象与实例对象三者的关系
+## 构造函数与原型对象与实例对象三者的关系
 
 好了，现在大概知道原型**proto**与原型 prototype 之间的关系、构造函数与原型之间的关系之后，我们就可以画出一个关系图（这些关系有什么用，下面 1.4 会说到），这样看的更明了：
 ![在这里插入图片描述](es-prototypeChain.assets/es-prototypeChain-3.png)
 
-## 1.4 原型的作用
+## 原型的作用
 
 原型有两个作用：1.实现数据共享；2.为了实现继承。
 
-### 1.4.1 数据共享
+### 数据共享
 
 **不好的方法：**
 
@@ -111,7 +111,7 @@ per2.eat(); // 吃
 > 这里要思考一下为什么实例对象中可以访问到构造函数原型 prototype 中的属性和方法呢，原因就是因为我们之前说的实例对象的原型**proto**指向了构造函数的原型 prototype;
 > 实例对象使用的属性或者方法,先在实例中查找,找到了则直接使用,找不到，则去实例对象的**proto**指向的原型对象 prototype 中找,找到了则使用,找不到则报错。
 
-### 1.4.2 实现继承
+### 实现继承
 
 ```javascript
 //这是一个人的构造函数
@@ -137,7 +137,7 @@ teacher.eat(); //吃
 ![在这里插入图片描述](es-prototypeChain.assets/es-prototypeChain-4.png)
 js 实现继承的原理就是改变了原型 prototype 的指向，现在 Teacher 的 prototype 指向了 new Person()后的一个实例对象，所以我们用 Teacher 创建出来的实例对象，也是有 Person 构造函数的属性和方法的，这样就可以说 Teacher 继承了 Person。
 
-# 2.javascript 原型链
+## 原型链
 
 **原型链:** 是一种关系,实例对象和原型对象 prototype 之间的关系,关系是通过原型**proto**来联系的。
 
