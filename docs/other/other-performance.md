@@ -146,3 +146,9 @@ Net 下方显示的是对应时间轴显示的图像
 `Event Log`：表示事件发生的顺序列表，可以看到事件的开始触发时间 start time，根据记录期间的活动顺序查看活动，右边有事件描述信息
 
 ![](other-performance.assets/other-performance-13.png)
+
+## 参考链接
+
+- [Performance 使用指南前端性能排查](https://pengzhenglong.github.io/2023/03/31/Performance%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E6%8E%92%E6%9F%A5/)
+- [关于 Chrome DevTools Performance 的使用与分析](https://juejin.cn/post/7124197466991231007#heading-7)
+- [狙杀页面卡顿 —— Performance 指北](https://juejin.cn/post/6844903651262070791#heading-0)
