@@ -114,7 +114,10 @@ export default defineConfig({
       {
         text: "服务器",
         collapsed: false,
-        items: [{ text: "部署生产环境", link: "/server/server-install" }],
+        items: [
+          { text: "部署生产环境", link: "/server/server-install" },
+          { text: "Docker的使用", link: "/server/server-docker" },
+        ],
       },
       {
         text: "其他",
