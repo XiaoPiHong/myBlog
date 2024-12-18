@@ -117,6 +117,7 @@ export default defineConfig({
         items: [
           { text: "部署生产环境", link: "/server/server-install" },
           { text: "Docker的使用", link: "/server/server-docker" },
+          { text: "Docker自定义镜像", link: "/server/server-docker-image" },
         ],
       },
       {

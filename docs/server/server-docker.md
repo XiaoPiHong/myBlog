@@ -72,6 +72,42 @@ docker version
 docker info
 ```
 
+换源
+
+```bash
+# 没有该文件就新建
+vim /etc/docker/daemon.json
+```
+
+写入
+
+```json
+// 换源后记得重启
+{
+  "registry-mirrors": [
+    "https://2oj9nmjj.mirror.aliyuncs.com",
+    "https://registry.docker-cn.com",
+    "http://hub-mirror.c.163.com",
+    "https://dockerhub.azk8s.cn",
+    "https://mirror.ccs.tencentyun.com",
+    "https://registry.cn-hangzhou.aliyuncs.com",
+    "https://docker.mirrors.ustc.edu.cn",
+    "https://docker.m.daocloud.io",
+    "https://noohub.ru",
+    "https://huecker.io",
+    "https://dockerhub.timeweb.cloud"
+  ]
+}
+```
+
+刷新重启
+
+```bash
+sudo systemctl daemon-reload
+
+sudo systemctl restart docker
+```
+
 Docker 需要用户具有 sudo 权限，为了避免每次命令都输入 sudo，可以把用户加入 Docker 用户组
 
 ```bash
