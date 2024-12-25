@@ -157,6 +157,9 @@ docker image pull 镜像名
 # 查看本机的镜像
 docker image ls
 
+# 删除镜像
+docker rmi [Image ID]
+
 # 运行image镜像生成容器实例
 # （1）：docker container run命令会从 image 文件，生成一个正在运行的容器实例
 # （2）：docker container run命令具有自动抓取 image 文件的功能。如果发现本地没有指定的 image 文件，就会从仓库自动抓取。因此，前面的docker image pull命令并不是必需的步骤。
