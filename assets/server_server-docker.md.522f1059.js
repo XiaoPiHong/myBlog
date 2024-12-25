@@ -61,6 +61,9 @@ import{_ as s,o as a,c as n,X as l}from"./chunks/framework.af6290ec.js";const d=
 <span class="line"><span style="color:#676E95;font-style:italic;"># 查看本机的镜像</span></span>
 <span class="line"><span style="color:#FFCB6B;">docker</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">image</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">ls</span></span>
 <span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic;"># 删除镜像</span></span>
+<span class="line"><span style="color:#FFCB6B;">docker</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">rmi</span><span style="color:#A6ACCD;"> [Image </span><span style="color:#C3E88D;">ID]</span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#676E95;font-style:italic;"># 运行image镜像生成容器实例</span></span>
 <span class="line"><span style="color:#676E95;font-style:italic;"># （1）：docker container run命令会从 image 文件，生成一个正在运行的容器实例</span></span>
 <span class="line"><span style="color:#676E95;font-style:italic;"># （2）：docker container run命令具有自动抓取 image 文件的功能。如果发现本地没有指定的 image 文件，就会从仓库自动抓取。因此，前面的docker image pull命令并不是必需的步骤。</span></span>
