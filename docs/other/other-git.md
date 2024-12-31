@@ -237,3 +237,7 @@ stash 储藏注意事项：
 2、再初始化本地的子模块配置：git submodule init
 
 3、再拉取所有子模块的代码：git submodule update
+
+## 选 commit 合并到分支
+
+先选定分支中需要合并的记录，再切换到需要合并到的分支，git cherry-pick [commit id]，有冲突就需要合并
