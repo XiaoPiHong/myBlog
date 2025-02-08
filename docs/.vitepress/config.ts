@@ -102,13 +102,19 @@ export default defineConfig({
         text: "网络",
         collapsed: false,
         items: [
+          {
+            text: "Http",
+            collapsed: false,
+            items: [
+              // { text: "http缓存", link: "/network/http/http-cache" },
+              {
+                text: "http的握手和挥手机制",
+                link: "/network/http/http-handshake",
+              },
+            ],
+          },
           { text: "jsonp", link: "/network/network-jsonp" },
           { text: "jwt", link: "/network/network-jwt" },
-          // {
-          //   text: "Http",
-          //   collapsed: false,
-          //   items: [{ text: "http缓存", link: "/network/http/http-cache" }],
-          // },
         ],
       },
       {
