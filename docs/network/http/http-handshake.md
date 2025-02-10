@@ -18,7 +18,7 @@
 此外，还有两个序号：
 
 1. Sequence number ：顺序号，发送数据包中的第一个字节的序列号，一般为小写的 seq。
-2. Acknowledge number：确认号，响应前面的 seq，值为 seq+1，可以理解为期望下次发出的序列号为 seq+1；
+2. Acknowledge number：确认号，响应前面的 seq，值为 seq+1，可以理解为期望下次发出的序列号为 seq+1。
 
 ## 二、TCP 三次握手
 
