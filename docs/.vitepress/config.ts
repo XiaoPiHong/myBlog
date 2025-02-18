@@ -69,7 +69,7 @@ export default defineConfig({
             text: "Browser Object Model",
             collapsed: false,
             items: [
-              { text: "迭代器", link: "/js/bom/bom-debounce-and-throttle" },
+              { text: "防抖与节流", link: "/js/bom/bom-debounce-and-throttle" },
             ],
           },
         ],
