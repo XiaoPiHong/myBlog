@@ -25,10 +25,13 @@ docker-compose --version
 ```bash
 # 启动所有服务
 docker-compose up
+
 # 关闭所有服务
 docker-compose stop
+
 # 通过yaml文件一键停止容器
 docker compose down --rmi all
+
 # 通过yaml文件一键启动容器
 docker compose up -d
 ```
