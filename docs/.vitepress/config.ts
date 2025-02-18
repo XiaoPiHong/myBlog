@@ -65,11 +65,13 @@ export default defineConfig({
           //   items: [],
           // },
           // 浏览器对象模型
-          // {
-          //   text: "Browser Object Model",
-          //   collapsed: false,
-          //   items: [],
-          // },
+          {
+            text: "Browser Object Model",
+            collapsed: false,
+            items: [
+              { text: "迭代器", link: "/bom/es/bom-debounce-and-throttle" },
+            ],
+          },
         ],
       },
       // {
