@@ -14,7 +14,7 @@
 3. 节流分时间戳节流和定时节流
 4. 应用场景：监听 scroll 滚动事件、dom 元素的拖拽功能实现、射击游戏、计算鼠标移动的距离...
 
-## 案例
+## 防抖案例
 
 ```html
 <!DOCTYPE html>
@@ -150,6 +150,216 @@
       })();
     </script>
   </body>
+</html>
+```
+
+## 节流案例
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #div1 {
+      max-height: 100px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background-color: pink;
+    }
+
+    #div2 {
+      height: 2000px;
+    }
+
+    #div3 {
+      max-height: 100px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background-color: yellow;
+    }
+
+    #div4 {
+      height: 2000px;
+    }
+
+    #div5 {
+      max-height: 100px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background-color: red;
+    }
+
+    #div6 {
+      height: 2000px;
+    }
+
+    #div7 {
+      max-height: 100px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background-color: green;
+    }
+
+    #div8 {
+      height: 2000px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="div1">
+    <div id="div2">时间戳节流</div>
+  </div>
+  <div id="div3">
+    <div id="div4">定时器节流</div>
+  </div>
+  <div id="div5">
+    <div id="div6">时间戳+定时器节流</div>
+  </div>
+  <div id="div7">
+    <div id="div8">优化节流</div>
+  </div>
+  <script>
+    /*
+    --------------------------------时间戳节流------------------------------
+    */
+    (function () {
+      //n秒内第一次触发立即执行，最后一次触发不执行
+      function throttle(func, wait) {
+        let old = 0
+        return function () {
+          const that = this
+          const args = arguments
+          let now = new Date().valueOf()
+          if (now - old > wait) {
+            func.apply(that, args)
+            old = now
+          }
+        }
+      }
+      function dosomething(e) {
+        console.log('需要利用节流做的事情')
+      }
+      document.getElementById('div1').onscroll = throttle(dosomething, 100)
+    })()
+  </script>
+  <script>
+      /*
+      --------------------------------定时器节流------------------------------
+      */
+      (function () {
+        //n秒内第一次触发不立即执行，最后一次触发执行
+        function throttle(func, wait) {
+          let timeout
+          return function () {
+            const that = this
+            const args = arguments
+            if (!timeout) {
+              timeout = setTimeout(function () {
+                func.apply(that, args)
+                timeout = null
+              }, wait)
+            }
+          }
+        }
+        function dosomething(e) {
+          console.log('需要利用节流做的事情')
+        }
+        document.getElementById('div3').onscroll = throttle(dosomething, 5000)
+      })()
+  </script>
+  <script>
+      /*
+      --------------------------------时间戳+定时器节流------------------------------
+      */
+      (function () {
+        //n秒内第一次触发立即执行，最后一次触发也执行
+        function throttle(func, wait) {
+          let old = 0
+          let timeout
+          return function () {
+            const that = this
+            const args = arguments
+            let now = +new Date()
+            if (now - old > wait) {
+              if (timeout) {
+                clearTimeout(timeout)
+                timeout = null
+              }
+              func.apply(that, args)
+              old = now
+            } else if (!timeout) {
+              timeout = setTimeout(function () {
+                func.apply(that, args)
+                old = +new Date()
+                timeout = null
+              }, wait)
+            }
+          }
+        }
+        function dosomething(e) {
+          console.log('需要利用节流做的事情')
+        }
+        document.getElementById('div5').onscroll = throttle(dosomething, 5000)
+      })()
+  </script>
+  <script>
+      /*
+      --------------------------------优化节流（可控制首次是否立即触发与最后一次触发是否执行）------------------------------
+      */
+      (function () {
+        function throttle(func, wait, options) {
+          let timeout
+          let old = 0
+          if (!options) options = {}
+          return function () {
+            const that = this
+            const args = arguments
+            let now = new Date().valueOf()
+            if (options.leading === false && !old) {
+              old = now
+            }
+            if (now - old > wait) {
+              if (timeout) {
+                clearTimeout(timeout)
+                timeout = null
+              }
+              func.apply(that, args)
+              old = now
+            } else if (!timeout && options.trailing !== false) {
+              timeout = setTimeout(function () {
+                func.apply(that, args)
+                old = new Date().valueOf()
+                timeout = null
+              }, wait)
+            }
+          }
+        }
+        function dosomething() {
+          console.log('需要利用节流做的事情')
+        }
+        document.getElementById('div7').onscroll = throttle(dosomething, 5000, { leading: true, trailing: false })
+        /*
+        第一次触发立即执行，最后一次触发不会执行：   options:{leading:true,trailing:false}
+        第一次触发不会立即执行，最后一次触发会执行：   options:{leading:false,trailing:true}
+        第一次触发会立即执行，最后一次触发也会执行：    options:{leading:true,trailing:true}
+        默认:                                        options={leading:true,trailing:true}
+        */
+      })()
+  </script>
+  <script>
+    /*
+    --------------------------------取消节流------------------------------
+    */
+    //取消节流和取消防抖一样
+  </script>
+</body>
+
 </html>
 ```
 
