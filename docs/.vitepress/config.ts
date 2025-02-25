@@ -56,6 +56,7 @@ export default defineConfig({
                 link: "/js/es/es-prototypeChain",
               },
               { text: "继承", link: "/js/es/es-extend" },
+              { text: "事件循环机制", link: "/js/es/es-eventloop" },
             ],
           },
           // 文档对象模型
