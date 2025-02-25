@@ -19,4 +19,11 @@ eventloop开始时会从全局的代码一行一行往下执行，遇到函数�
 
 ![](es-eventloop.assets/es-eventloop-3.png)
 
+## 案例2（涉及消息队列）
+
+js中的异步操作，如：fetch、事件回调、（setTimeout、sesetInterval中的回调函数）会入队到消息队列中（宏任务队列），为消息，消息会在调用栈清空的时候压入到调用栈中执行，这也是为什么setTimeout中的延迟参数只是最小延迟时间。
+
+![](es-eventloop.assets/es-eventloop-4.png)
+
+
 
