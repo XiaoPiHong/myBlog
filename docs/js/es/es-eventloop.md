@@ -25,5 +25,17 @@ js中的异步操作，如：fetch、事件回调、（setTimeout、sesetInterva
 
 ![](es-eventloop.assets/es-eventloop-4.png)
 
+## 案例3（涉及消息队列、微任务队列）
+持有promise、async、await创建的异步操作会加入到微任务队列中，它会在调用栈在清空的时候立即执行，并且处理期间加入的微任务也会一同执行。
+
+![](es-eventloop.assets/es-eventloop-5.png)
+
+## 总结
+
+微任务队列中的内容要比消息队列（宏任务队列）中的内容优先执行。
+
+
+
+
 
 
