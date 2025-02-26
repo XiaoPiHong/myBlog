@@ -2,7 +2,7 @@
 
 ## event loop
 
-js是一门单线程的语言，它的异步和多线程是通过Event Loop事件循环机制来实现的。大体由但部分组成：
+js是一门单线程的语言，它的异步和多线程是通过Event Loop事件循环机制来实现的。大体由以下几部分组成：
 - 调用栈（call stack）
 - 消息队列（Message Queue）
 - 微任务队列（Microtask Queue）
