@@ -131,6 +131,10 @@ export default defineConfig({
             text: "Docker Compose的使用",
             link: "/server/server-docker-compose",
           },
+          {
+            text: "域名与SSL证书配置",
+            link: "/server/server-domain-ssl",
+          },
         ],
       },
       {
