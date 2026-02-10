@@ -138,6 +138,13 @@ export default defineConfig({
         ],
       },
       {
+        text: "AI",
+        collapsed: false,
+        items: [
+          { text: "Prompt Skill", link: "/ai/ai-prompt-skill" },
+        ],
+      },
+      {
         text: "其他",
         collapsed: false,
         items: [
