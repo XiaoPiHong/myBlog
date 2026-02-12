@@ -142,6 +142,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: "Prompt Skill", link: "/ai/ai-prompt-skill" },
+          { text: "OpenClaw 部署", link: "/ai/ai-openclaw-deploy" },
         ],
       },
       {
