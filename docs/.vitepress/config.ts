@@ -142,7 +142,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: "Prompt Skill", link: "/ai/ai-prompt-skill" },
-          { text: "OpenClaw 部署", link: "/ai/ai-openclaw-deploy" },
+          // { text: "OpenClaw 部署", link: "/ai/ai-openclaw-deploy" },
         ],
       },
       {
@@ -153,6 +153,10 @@ export default defineConfig({
           { text: "script标签", link: "/other/other-script" },
           { text: "Performance工具", link: "/other/other-performance" },
           { text: "git使用", link: "/other/other-git" },
+          {
+            text: "GitHub双账号SSH说明",
+            link: "/other/other-github-dual-account-ssh",
+          },
         ],
       },
     ],
