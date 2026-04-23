@@ -76,4 +76,4 @@ git remote set-url origin git@github.com-newxiaopihong:NewXiaoPiHong/仓库名.g
 
 ## 大号仓库的写法
 
-大号仓库保持原来的默认地址即可：
+大号仓库保持原来的默认地址即可
